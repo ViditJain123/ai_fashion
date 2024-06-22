@@ -1,8 +1,9 @@
 import mongoose, { Schema, Document } from "mongoose";
+import { Product } from "./Product";
 
 export interface Order extends Document {
     userWhoOrdered: string;
-    orderItems: [],
+    orderedProducts: Product[],
     orderTotal: number;
     orderDate: Date;
     orderStatus: string;
@@ -12,7 +13,7 @@ export interface Order extends Document {
 
 const OrderSchema: Schema<Order> = new Schema({
     userWhoOrdered: { type: String, required: [true, "User who ordered is required"] },
-    orderItems: { type: [], required: [true, "Order items are required"] },
+    orderedProducts: { type: [], required: [true, "Order items are required"] },
     orderTotal: { type: Number, required: [true, "Order total is required"] },
     orderDate: { type: Date, required: [true, "Order date is required"] },
     orderStatus: { type: String, required: [true, "Order status is required"] },
