@@ -1,30 +1,56 @@
-import mongoose, { Schema, Document } from "mongoose";
-import { Product } from "./Product";
+import mongoose, { Schema, Document, Model, mongo } from "mongoose";
+
+export interface ProductforOrder extends Document {
+    productId: mongoose.Schema.Types.ObjectId;
+    quantity: Number;
+}
+
+const ProductforOrderSchema: Schema<ProductforOrder> = new Schema({
+    productId: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "Product",
+        required: true,
+    },
+    quantity: {
+        type: Number,
+        required: true,
+    }
+})
 
 export interface Order extends Document {
-  userWhoOrdered: string;
-  orderedProducts: Product[];
-  orderTotal: number;
-  orderDate: Date;
-  orderStatus: string;
-  payMethod: string;
-  payStatus: string;
+  user: mongoose.Schema.Types.ObjectId;
+  productForOrder: mongoose.Schema.Types.ObjectId[];
+  address: String;
+  payMethod: String;
+  payStatus: String;
+  orderStatus: String;
 }
 
 const OrderSchema: Schema<Order> = new Schema({
-  userWhoOrdered: {
-    type: String,
-    required: [true, "User who ordered is required"],
-  },
-  orderedProducts: { type: [], required: [true, "Order items are required"] },
-  orderTotal: { type: Number, required: [true, "Order total is required"] },
-  orderDate: { type: Date, required: [true, "Order date is required"] },
-  orderStatus: { type: String, required: [true, "Order status is required"] },
-  payMethod: { type: String, required: [true, "Payment method is required"] },
-  payStatus: { type: String, required: [true, "Payment status is required"] },
-});
-
-const OrderModel =
-  (mongoose.models.Order as mongoose.Model<Order>) ||
-  mongoose.model<Order>("Order", OrderSchema);
-module.exports = OrderModel;
+    user: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "User",
+        required: true,
+    },
+    productForOrder: {
+        type: [mongoose.Schema.Types.ObjectId],
+        ref: "Product",
+        required: true,
+    },
+    address: {
+        type: String,
+        required: [true, "Address is required"],
+    },
+    payMethod: {
+        type: String,
+        required: [true, "Payment Method is required"],
+    },
+    payStatus: {
+        type: String,
+        required: [true, "Payment Status is required"],
+    },
+    orderStatus: {
+        type: String,
+        required: [true, "Order Status is required"],
+    },
+})
