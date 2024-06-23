@@ -9,7 +9,6 @@ export interface User extends Document {
   verified: boolean;
   orderHistory: mongoose.Schema.Types.ObjectId[];
   cart: Cart[];
-  role: "user" | "admin";
 }
 
 export interface Cart extends Document{
