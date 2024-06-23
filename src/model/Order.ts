@@ -54,3 +54,9 @@ const OrderSchema: Schema<Order> = new Schema({
         required: [true, "Order Status is required"],
     },
 })
+
+const OrderModel =
+  (mongoose.models.Order as mongoose.Model<Order>) ||
+  mongoose.model<Order>("Order", OrderSchema);
+
+module.exports = OrderModel;
