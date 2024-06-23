@@ -1,16 +1,5 @@
 import mongoose, { Schema, Document, Mongoose } from "mongoose";
 
-export interface User extends Document {
-  email: string;
-  phoneNumber: number;
-  password: string;
-  verificationToken: string;
-  verifyTokenExpire: Date;
-  verified: boolean;
-  orderHistory: mongoose.Schema.Types.ObjectId[];
-  cart: Cart[];
-}
-
 export interface Cart extends Document{
   userId: mongoose.Schema.Types.ObjectId;
   product: mongoose.Schema.Types.ObjectId;
@@ -33,6 +22,18 @@ const CartSchema: Schema<Cart> = new Schema({
     required: true,
   }
 })
+
+
+export interface User extends Document {
+  email: string;
+  phoneNumber: number;
+  password: string;
+  verificationToken: string;
+  verifyTokenExpire: Date;
+  verified: boolean;
+  orderHistory: mongoose.Schema.Types.ObjectId[];
+  cart: Cart[];
+}
 
 const UserSchema: Schema<User> = new Schema({
   email: {
