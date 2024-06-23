@@ -20,4 +20,4 @@ const CategoryModel =
     (mongoose.models.Category as mongoose.Model<Category>) ||
     mongoose.model<Category>("Category", CategorySchema);
 
-module.exports = CategoryModel;
+export default CategoryModel

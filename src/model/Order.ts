@@ -59,4 +59,4 @@ const OrderModel =
   (mongoose.models.Order as mongoose.Model<Order>) ||
   mongoose.model<Order>("Order", OrderSchema);
 
-module.exports = OrderModel;
+export default OrderModel;

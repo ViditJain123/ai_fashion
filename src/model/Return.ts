@@ -59,4 +59,4 @@ const ReturnModel =
   (mongoose.models.Return as mongoose.Model<Return>) ||
   mongoose.model<Return>("Return", ReturnSchema);
 
-module.exports = ReturnModel;
+export default ReturnModel;

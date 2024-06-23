@@ -62,14 +62,17 @@ const UserSchema: Schema<User> = new Schema({
     type: [mongoose.Schema.Types.ObjectId],
     ref: "Order",
     required: true,
+    default: [],
   },
   cart: {
     type: [CartSchema],
-    required: true
+    required: true,
+    default: [],
   },
 });
 
 const UserModel =
   (mongoose.models.User as mongoose.Model<User>) ||
   mongoose.model<User>("User", UserSchema);
-module.exports = UserModel;
+
+export default UserModel;

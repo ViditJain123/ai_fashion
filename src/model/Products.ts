@@ -127,4 +127,4 @@ const ProductSchema: Schema<Product> = new Schema({
 });
 
 const ProductModel = (mongoose.models.Product as Model<Product>) || mongoose.model<Product>("Product", ProductSchema);
-module.exports = ProductModel;
+export default ProductModel;

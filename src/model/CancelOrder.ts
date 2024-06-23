@@ -31,4 +31,4 @@ const CancelOrderSchema: Schema<CancelOrder> = new Schema({
 const CancelOrderModel =
     (mongoose.models.CancelOrder as mongoose.Model<CancelOrder>) ||
     mongoose.model<CancelOrder>("CancelOrder", CancelOrderSchema);
-module.exports = CancelOrderModel;
+export default CancelOrderModel;
