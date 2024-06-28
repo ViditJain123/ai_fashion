@@ -44,15 +44,15 @@ const SignUp: React.FC = () => {
         }
 
         try {
-            const response = await fetch('http://localhost:3000/api/signup', {
+            const response = await fetch('http://localhost:3000/api/sign-up', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
                 },
                 body: JSON.stringify({
-                    email: formData.email,
-                    phoneNumber: formData.phoneNumber,
-                    password: formData.password,
+                    "email": formData.email,
+                    "phoneNumber": formData.phoneNumber,
+                    "password": formData.password,
                 }),
             });
 
